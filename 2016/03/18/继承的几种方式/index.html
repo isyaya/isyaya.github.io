@@ -6,45 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>函数的四种调用模式 | isyaya的个人博客</title>
+  <title>继承的几种方式 | isyaya的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="函数的四种调用模式写代码时总是遇到函数调用的问题，今天闲着没事，就总结一下。
-当一个函数声明好了之后，是无法确定函数的身份的，只有在调用的时候，通过函数里面的执行情况和结果，才能知道函数的身份。
-1.函数调用模式具体案例：
-function fn(a,b){
-    return a+b;
-    console.log(this);
-}
-fn();
-`&amp;lt;/pre&amp;gt;
-此时的this指向">
+  <meta name="description" content="3．继承3.1 扩展原型对象实现继承JS继承：将别人的东西拿来自己用
+继承关系：s1继承自原型对象 —-&amp;gt;s1.proto===原型对象
+构造函数有一个prototype属性（默认的原型对象），通过给原型对象添加一个属性或方法，从而可以让构造函数的实例可以访问到，这种继承模型称之为：扩展原型对象实现继承。
+3.2 替换原型对象实现继承将默认的原型对象替换掉，换成一个全新的对象
+为什么要使用替">
 <meta property="og:type" content="article">
-<meta property="og:title" content="函数的四种调用模式">
-<meta property="og:url" content="http://yoursite.com/2016/07/10/函数的四种调用模式/index.html">
+<meta property="og:title" content="继承的几种方式">
+<meta property="og:url" content="http://yoursite.com/2016/03/18/继承的几种方式/index.html">
 <meta property="og:site_name" content="isyaya的个人博客">
-<meta property="og:description" content="函数的四种调用模式写代码时总是遇到函数调用的问题，今天闲着没事，就总结一下。
-当一个函数声明好了之后，是无法确定函数的身份的，只有在调用的时候，通过函数里面的执行情况和结果，才能知道函数的身份。
-1.函数调用模式具体案例：
-function fn(a,b){
-    return a+b;
-    console.log(this);
-}
-fn();
-`&amp;lt;/pre&amp;gt;
-此时的this指向">
-<meta property="og:updated_time" content="2016-11-10T12:09:31.163Z">
+<meta property="og:description" content="3．继承3.1 扩展原型对象实现继承JS继承：将别人的东西拿来自己用
+继承关系：s1继承自原型对象 —-&amp;gt;s1.proto===原型对象
+构造函数有一个prototype属性（默认的原型对象），通过给原型对象添加一个属性或方法，从而可以让构造函数的实例可以访问到，这种继承模型称之为：扩展原型对象实现继承。
+3.2 替换原型对象实现继承将默认的原型对象替换掉，换成一个全新的对象
+为什么要使用替">
+<meta property="og:updated_time" content="2016-11-10T12:39:48.634Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="函数的四种调用模式">
-<meta name="twitter:description" content="函数的四种调用模式写代码时总是遇到函数调用的问题，今天闲着没事，就总结一下。
-当一个函数声明好了之后，是无法确定函数的身份的，只有在调用的时候，通过函数里面的执行情况和结果，才能知道函数的身份。
-1.函数调用模式具体案例：
-function fn(a,b){
-    return a+b;
-    console.log(this);
-}
-fn();
-`&amp;lt;/pre&amp;gt;
-此时的this指向">
+<meta name="twitter:title" content="继承的几种方式">
+<meta name="twitter:description" content="3．继承3.1 扩展原型对象实现继承JS继承：将别人的东西拿来自己用
+继承关系：s1继承自原型对象 —-&amp;gt;s1.proto===原型对象
+构造函数有一个prototype属性（默认的原型对象），通过给原型对象添加一个属性或方法，从而可以让构造函数的实例可以访问到，这种继承模型称之为：扩展原型对象实现继承。
+3.2 替换原型对象实现继承将默认的原型对象替换掉，换成一个全新的对象
+为什么要使用替">
   
     <link rel="alternative" href="/atom.xml" title="isyaya的个人博客" type="application/atom+xml">
   
@@ -168,7 +153,7 @@ fn();
 </nav>
 
       <div class="body-wrap">
-        <article id="post-函数的四种调用模式" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-继承的几种方式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -178,7 +163,7 @@ fn();
         
   
     <h1 class="article-title" itemprop="name">
-      函数的四种调用模式
+      继承的几种方式
     </h1>
   
 
@@ -186,61 +171,79 @@ fn();
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="函数的四种调用模式"><a href="#函数的四种调用模式" class="headerlink" title="函数的四种调用模式"></a>函数的四种调用模式</h1><p>写代码时总是遇到函数调用的问题，今天闲着没事，就总结一下。</p>
-<p>当一个函数声明好了之后，是无法确定函数的身份的，只有在调用的时候，通过函数里面的执行情况和结果，才能知道函数的身份。</p>
-<h2 id="1-函数调用模式"><a href="#1-函数调用模式" class="headerlink" title="1.函数调用模式"></a>1.函数调用模式</h2><p>具体案例：</p>
-<pre><code>function fn(a,b){
-    return a+b;
-    console.log(this);
+        <h2 id="3．继承"><a href="#3．继承" class="headerlink" title="3．继承"></a>3．继承</h2><h3 id="3-1-扩展原型对象实现继承"><a href="#3-1-扩展原型对象实现继承" class="headerlink" title="3.1 扩展原型对象实现继承"></a>3.1 扩展原型对象实现继承</h3><p>JS继承：将别人的东西拿来自己用</p>
+<p>继承关系：s1继承自原型对象 —-&gt;s1.<strong>proto</strong>===原型对象</p>
+<p>构造函数有一个prototype属性（默认的原型对象），通过给原型对象添加一个属性或方法，从而可以让构造函数的实例可以访问到，这种继承模型称之为：扩展原型对象实现继承。</p>
+<h3 id="3-2-替换原型对象实现继承"><a href="#3-2-替换原型对象实现继承" class="headerlink" title="3.2 替换原型对象实现继承"></a>3.2 替换原型对象实现继承</h3><p>将默认的原型对象替换掉，换成一个全新的对象</p>
+<h4 id="为什么要使用替换原型对象实现继承？"><a href="#为什么要使用替换原型对象实现继承？" class="headerlink" title="为什么要使用替换原型对象实现继承？"></a>为什么要使用替换原型对象实现继承？</h4><p>当我们需要给构造函数的原型对象中添加很多个属性、方法的时候，如果一直使用扩展对象原型，会多些很多冗余（重复）的代码。</p>
+<h4 id="如何实现？"><a href="#如何实现？" class="headerlink" title="如何实现？"></a>如何实现？</h4><p>重新给构造函数的prototype属性赋值，值是一个全新的对象，在这个对象中添加属性、方法，注意一定要给这个对象添加constructor属性，值指向构造函数本身。</p>
+<pre><code>function Football(){}
+Football.prototype={
+Constructor:Football,
+a1:function(){},
+a2:function(){}
 }
-fn();
-`&lt;/pre&gt;
-</code></pre><p>此时的this指向window,但是以函数的形式调用时通常不使用this关键字。返回值由return语句决定。</p>
-<h2 id="2-方法调用模式"><a href="#2-方法调用模式" class="headerlink" title="2.方法调用模式"></a>2.方法调用模式</h2><p>把函数作为对象的方法，通过对象来访问这个方法。</p>
-<p>具体案例：</p>
-<pre><code>&lt;pre&gt;`var obj={
-    fn:function(a,b){
-        return a+b;
-        console.log(this);
-    }
+</code></pre><h3 id="3-3-混入继承"><a href="#3-3-混入继承" class="headerlink" title="3.3 混入继承"></a>3.3 混入继承</h3><p> 使用场景：已知对象o,o2,需要将o中的功能（属性、方法）拷贝到o2中。</p>
+<p>实现方式：for…in遍历o1对象的属性，将其属性值赋值到o2中</p>
+<p> 实现方式：</p>
+<pre><code>for(var key in o){//key是字符串类型的值
+            //属性的值
+     var value=o[key];
+//设置o2中的同名属性
+o2[key]=value;
 }
-obj.fn;
-`&lt;/pre&gt;
-</code></pre><p>该方法内部，this的值指向：调用方法的对象.返回值由return语句决定。</p>
-<h2 id="3-构造函数调用模"><a href="#3-构造函数调用模" class="headerlink" title="3.构造函数调用模"></a>3.构造函数调用模</h2><p> 如果函数或方法调用之前带有关键字new，它就是构造函数调用模式</p>
-<p>具体案例：</p>
-<pre><code>&lt;pre&gt;`function Person(name,age){
-  this.name=name;
-  this.age=age;
+</code></pre><h4 id="将混入继承的模型封装成函数："><a href="#将混入继承的模型封装成函数：" class="headerlink" title="将混入继承的模型封装成函数："></a>将混入继承的模型封装成函数：</h4><p>功能：将源对象中的属性和方法拷贝到目标元素中</p>
+<p>target 目标对象：接收数据的对象</p>
+<p>source 源对象：数据从那个对象来</p>
+<pre><code>function mixin(target,source){
+for(var key in source){
+var value=source[key];
+target[key]=value;
 }
-var p1=new Person;
-console.log(p1.name);
-`&lt;/pre&gt;
-</code></pre><p>在该函数内部，this的值指向：构造函数的实例。</p>
-<p>如果没有手动添加返回值，返回的就是构造函数的实例;如果手动添加了基本类型的数据作为返回值，返回的还是构造函数的实例，如果手动添加的是对象类型的返回值，最终返回的就是添加的这个对象</p>
-<h2 id="4-上下文调用模式"><a href="#4-上下文调用模式" class="headerlink" title="4.上下文调用模式"></a>4.上下文调用模式</h2><p>通过call()和apply()间接调用函数，根据用户传递的参数产生不同的结果。</p>
-<pre><code>&lt;pre&gt;`function foo(){
-        console.log(this.name);
+return target;
 }
-foo.call({name:&quot;张三&quot;});//&quot;张三&quot;
-foo.call(null);//&quot;&quot;
-foo.call(3);//undefined
-foo.call(&quot;ll&quot;);//undefined
-</code></pre><p>call方法的第一个参数表示（本次调用该）函数内部的this的值,如果传递null的时候,foo里面的this的值将会变成window。</p>
-<p>call方法的第一个参数还可以是数字、字符串、布尔值这些基本类型,此时会转换成基本包装类型。</p>
-<p>返回值由return语句决定。</p>
-<h5 id="在这里也总结一下call和apply方法的异同："><a href="#在这里也总结一下call和apply方法的异同：" class="headerlink" title="在这里也总结一下call和apply方法的异同："></a>在这里也总结一下call和apply方法的异同：</h5><p>相同点：</p>
-<p>&nbsp;&nbsp; a.他们都是function.prototype对象中定义的方法</p>
-<p> &nbsp;&nbsp; b.第一个参数是都是函数内部的this的值</p>
-<p>不同点：</p>
-<p>&nbsp;&nbsp;如果需要给函数传递参数的时候，利用call方法，将函数的参数从第二个参数开始依次排开；利用apply方法，apply方法的第二个参数是一个数组对象，数组的第一个参数表示函数的第一个实参，依次以此类推。</p>
-
+</code></pre><p><strong>应用</strong>：jQuery中的$.extend方法利用的就是混入继承的实现原理。</p>
+<h3 id="3-4-原型-混入继承"><a href="#3-4-原型-混入继承" class="headerlink" title="3.4 原型+混入继承"></a>3.4 原型+混入继承</h3><p>利用混入继承的原理，向原型对象中添加属性和方法<br> 本质上就是对混入继承的一次应用</p>
+<pre><code>function Cat(){}
+Cat.prototype.extend=function(source){
+mixin(Cat.prototype,source)
+};
+//mixin(Cat.prototype,{a:10,b:20});
+Cat.prototype.extend({a:10,b:20});
+</code></pre><p> 原型+混入继承在jQUery中有一个很常见的应用：</p>
+<p>$.fn.extend()—&gt;jQuery.prototype.extend()</p>
+<h3 id="3-5-经典继承"><a href="#3-5-经典继承" class="headerlink" title="3.5 经典继承"></a>3.5 经典继承</h3><p>蝴蝶书（JavaScript语言精粹）（作者：道格拉斯）</p>
+<p><strong>实现功能</strong>：已知一个对象o,需要创建一个新的对象，这个对象继承自对象o。</p>
+<p><code>o2.__proto__===o</code></p>
+<p>由于<strong>proto</strong>不是一个标准的属性，不可适用于在正式代码中，因为它会产生兼容性问题，而且该属性可以被修改。可以删除但是无效。</p>
+<pre><code>var o={name:”ll”};
+function F(){}
+F.prototype=o;
+var o2=new F();//当调用构造函数的时候，如果没有参数可以省略括号：new F;
+</code></pre><p><strong>将经典继承封装成函数：</strong></p>
+<pre><code>function create(o){
+function F(){}
+F.prototype=o;
+return new F();
+}
+</code></pre><p><strong>总结：</strong>经典继承的使用场景：要创建一个对象（不需要关心构造函数），新的对象需要继承自另一个指定的对象。</p>
+<p>ES5（IE9以下不支持）:Object.create()的实现原理就是源自于经典继承。</p>
+<p>在新的浏览器中可以直接用：Object.create（）</p>
+<p>在旧的浏览器中应用经典继承：</p>
+<pre><code>If(typeof Object.create!==”function”){
+Object.create=function(o){
+function F(){}
+F.prototype=o;
+Return new F();
+}
+}
+</code></pre>
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/07/10/函数的四种调用模式/" class="archive-article-date">
-  	<time datetime="2016-07-10T12:08:01.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-07-10</time>
+      <a href="/2016/03/18/继承的几种方式/" class="archive-article-date">
+  	<time datetime="2016-03-18T12:19:55.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-18</time>
 </a>
       
       
@@ -253,11 +256,15 @@ foo.call(&quot;ll&quot;);//undefined
   
 <nav id="article-nav">
   
-  
-    <a href="/2016/04/13/canvas实现数据可视化/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">函数的四种调用模式</div>
-      <i class="icon-circle-right"></i>
+    <a href="/2016/04/13/canvas实现数据可视化/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          函数的四种调用模式
+        
+      </div>
     </a>
+  
   
 </nav>
 
