@@ -3,14 +3,43 @@
 <head>
   <meta charset="utf-8">
   
-  <title>isyaya的个人博客</title>
+  <title>函数的四种调用模式 | isyaya的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="isyaya的个人博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="使用canvas实现数据可视化绘制折线图&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+&amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;
+&amp;lt;style&amp;gt;
+    canvas {
+        border: 1p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数的四种调用模式">
+<meta property="og:url" content="http://yoursite.com/2016/04/13/canvas实现数据可视化/index.html">
 <meta property="og:site_name" content="isyaya的个人博客">
+<meta property="og:description" content="使用canvas实现数据可视化绘制折线图&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+&amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;
+&amp;lt;style&amp;gt;
+    canvas {
+        border: 1p">
+<meta property="og:image" content="https://github.com/isyaya/images/blob/master/1.png?raw=true">
+<meta property="og:image" content="https://github.com/isyaya/images/blob/master/2.png?raw=true">
+<meta property="og:image" content="https://github.com/isyaya/images/blob/master/3.png?raw=true">
+<meta property="og:updated_time" content="2016-11-10T12:09:30.804Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="isyaya的个人博客">
+<meta name="twitter:title" content="函数的四种调用模式">
+<meta name="twitter:description" content="使用canvas实现数据可视化绘制折线图&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+&amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;
+&amp;lt;style&amp;gt;
+    canvas {
+        border: 1p">
+<meta name="twitter:image" content="https://github.com/isyaya/images/blob/master/1.png?raw=true">
   
     <link rel="alternate" href="/atom.xml" title="isyaya的个人博客" type="application/atom+xml">
   
@@ -59,93 +88,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-函数的四种调用模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/07/10/函数的四种调用模式/" class="article-date">
-  <time datetime="2016-07-10T12:08:01.000Z" itemprop="datePublished">2016-07-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/10/函数的四种调用模式/">函数的四种调用模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="函数的四种调用模式"><a href="#函数的四种调用模式" class="headerlink" title="函数的四种调用模式"></a>函数的四种调用模式</h1><p>写代码时总是遇到函数调用的问题，今天闲着没事，就总结一下。</p>
-<p>当一个函数声明好了之后，是无法确定函数的身份的，只有在调用的时候，通过函数里面的执行情况和结果，才能知道函数的身份。</p>
-<h2 id="1-函数调用模式"><a href="#1-函数调用模式" class="headerlink" title="1.函数调用模式"></a>1.函数调用模式</h2><p>具体案例：</p>
-<pre><code>function fn(a,b){
-    return a+b;
-    console.log(this);
-}
-fn();
-`&lt;/pre&gt;
-</code></pre><p>此时的this指向window,但是以函数的形式调用时通常不使用this关键字。返回值由return语句决定。</p>
-<h2 id="2-方法调用模式"><a href="#2-方法调用模式" class="headerlink" title="2.方法调用模式"></a>2.方法调用模式</h2><p>把函数作为对象的方法，通过对象来访问这个方法。</p>
-<p>具体案例：</p>
-<pre><code>&lt;pre&gt;`var obj={
-    fn:function(a,b){
-        return a+b;
-        console.log(this);
-    }
-}
-obj.fn;
-`&lt;/pre&gt;
-</code></pre><p>该方法内部，this的值指向：调用方法的对象.返回值由return语句决定。</p>
-<h2 id="3-构造函数调用模"><a href="#3-构造函数调用模" class="headerlink" title="3.构造函数调用模"></a>3.构造函数调用模</h2><p> 如果函数或方法调用之前带有关键字new，它就是构造函数调用模式</p>
-<p>具体案例：</p>
-<pre><code>&lt;pre&gt;`function Person(name,age){
-  this.name=name;
-  this.age=age;
-}
-var p1=new Person;
-console.log(p1.name);
-`&lt;/pre&gt;
-</code></pre><p>在该函数内部，this的值指向：构造函数的实例。</p>
-<p>如果没有手动添加返回值，返回的就是构造函数的实例;如果手动添加了基本类型的数据作为返回值，返回的还是构造函数的实例，如果手动添加的是对象类型的返回值，最终返回的就是添加的这个对象</p>
-<h2 id="4-上下文调用模式"><a href="#4-上下文调用模式" class="headerlink" title="4.上下文调用模式"></a>4.上下文调用模式</h2><p>通过call()和apply()间接调用函数，根据用户传递的参数产生不同的结果。</p>
-<pre><code>&lt;pre&gt;`function foo(){
-        console.log(this.name);
-}
-foo.call({name:&quot;张三&quot;});//&quot;张三&quot;
-foo.call(null);//&quot;&quot;
-foo.call(3);//undefined
-foo.call(&quot;ll&quot;);//undefined
-</code></pre><p>call方法的第一个参数表示（本次调用该）函数内部的this的值,如果传递null的时候,foo里面的this的值将会变成window。</p>
-<p>call方法的第一个参数还可以是数字、字符串、布尔值这些基本类型,此时会转换成基本包装类型。</p>
-<p>返回值由return语句决定。</p>
-<h5 id="在这里也总结一下call和apply方法的异同："><a href="#在这里也总结一下call和apply方法的异同：" class="headerlink" title="在这里也总结一下call和apply方法的异同："></a>在这里也总结一下call和apply方法的异同：</h5><p>相同点：</p>
-<p>&nbsp;&nbsp; a.他们都是function.prototype对象中定义的方法</p>
-<p> &nbsp;&nbsp; b.第一个参数是都是函数内部的this的值</p>
-<p>不同点：</p>
-<p>&nbsp;&nbsp;如果需要给函数传递参数的时候，利用call方法，将函数的参数从第二个参数开始依次排开；利用apply方法，apply方法的第二个参数是一个数组对象，数组的第一个参数表示函数的第一个实参，依次以此类推。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/10/函数的四种调用模式/" data-id="civcc6yqa000108dgv32yijta" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-canvas实现数据可视化" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-canvas实现数据可视化" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/04/13/canvas实现数据可视化/" class="article-date">
   <time datetime="2016-04-13T07:12:01.000Z" itemprop="datePublished">2016-04-13</time>
@@ -158,8 +101,8 @@ foo.call(&quot;ll&quot;);//undefined
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/13/canvas实现数据可视化/">函数的四种调用模式</a>
+    <h1 class="article-title" itemprop="name">
+      函数的四种调用模式
     </h1>
   
 
@@ -503,10 +446,23 @@ for(var i=0;i&lt;newDatas.length;i++){
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/10/函数的四种调用模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          函数的四种调用模式
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
+</article>
 
 </section>
         
