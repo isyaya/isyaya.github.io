@@ -711,6 +711,170 @@ Return new F();
 
 
   
+    <article id="post-模块化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/18/模块化/">javas模块化开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-模块化"><a href="#1-模块化" class="headerlink" title="1. 模块化"></a>1. 模块化</h2><p>模块的作用就是：私有空间；可以加载，可以导出</p>
+<ul>
+<li><p>什么是模块化？</p>
+<ul>
+<li>模块化是指解决一个复杂问题时自顶向下逐层把系统划分成若干模块的过程，有多种属性，分别反映其内部特性</li>
+<li>解决复杂问题的一种方式</li>
+</ul>
+</li>
+<li><p>使用模块化带来的好处</p>
+<ul>
+<li>生产效率高</li>
+<li>可维护性高</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-模块化开发演变"><a href="#2-模块化开发演变" class="headerlink" title="2. 模块化开发演变"></a>2. 模块化开发演变</h2><h3 id="2-1-全局函数"><a href="#2-1-全局函数" class="headerlink" title="2.1 全局函数"></a>2.1 全局函数</h3><ul>
+<li>污染了全局变量</li>
+<li>模块成员之间看不出直接联系</li>
+</ul>
+<h3 id="2-2-命名空间"><a href="#2-2-命名空间" class="headerlink" title="2.2 命名空间"></a>2.2 命名空间</h3><ul>
+<li>理论意义上减少了变量冲突</li>
+<li>缺点1：暴露了模块中所有的成员，内部状态可以被外部改写，不安全</li>
+<li>缺点2：命名空间会越来越长</li>
+</ul>
+<h3 id="2-3-私有空间"><a href="#2-3-私有空间" class="headerlink" title="2.3 私有空间"></a>2.3 私有空间</h3><ul>
+<li>私有空间的变量和函数不会影响全局作用域</li>
+<li>公开共有方法，隐藏私有属性</li>
+</ul>
+<h3 id="2-4-匿名函数自执行的特性"><a href="#2-4-匿名函数自执行的特性" class="headerlink" title="2.4 匿名函数自执行的特性"></a>2.4 匿名函数自执行的特性</h3><p>如果不使用第三方规范的情况下，如果写模块可以采用下面这种方式：</p>
+<ul>
+<li><code>；(function(){})()</code><ul>
+<li>匿名自执行函数加分号的作用是为了防止前面的代码没有加分号造成语法解析错误</li>
+<li>将代码放到一个匿名自执行函数中是为了避免全局命名空间污染，核心就是利用函数的私有作用域</li>
+<li>将依赖项作为参数传递到匿名函数自执行的目的是为了减少作用域查找机制，提高代码执行效率</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-模块化规范（Sea-js）"><a href="#3-模块化规范（Sea-js）" class="headerlink" title="3. 模块化规范（Sea.js）"></a>3. 模块化规范（Sea.js）</h2><p>Seajs：一个JavaScript模块加载器，可以用一个js文件加载另一个js文件</p>
+<p>Sea.js 可以解决命名空间污染、文件依赖的问题。</p>
+<p>模块具有两个特性：</p>
+<ul>
+<li><p>模块要有一个私有作用于：避免全局命名空间污染</p>
+</li>
+<li><p>模块可以向外导出内部成员，供别的模块加载和使用</p>
+</li>
+</ul>
+<p>要构建一个系统，最基本的层面需要做两件事情：</p>
+<h4 id="3-1-定义系统成员："><a href="#3-1-定义系统成员：" class="headerlink" title="3.1 定义系统成员："></a>3.1 定义系统成员：</h4><p>确定成员是什么</p>
+<ul>
+<li>模块是一个JavaScript文件</li>
+<li>每一个模块都是用define函数去定义</li>
+</ul>
+<h4 id="3-2-约定系统通讯："><a href="#3-2-约定系统通讯：" class="headerlink" title="3.2 约定系统通讯："></a>3.2 约定系统通讯：</h4><p>确定成员之间如何交互，遵循规则是什么</p>
+<ul>
+<li>一个SeaJS模块默认就是私有作用域</li>
+<li>如果想要被外部文件模块访问，就必须把要公开的属性挂载给<code>module.exports</code> 对象接口</li>
+<li>使用<code>require</code> 函数可以加载一个指定的模块，得到该模块代码中暴露的接口对象</li>
+</ul>
+<h4 id="3-3-如何启动整个模块系统"><a href="#3-3-如何启动整个模块系统" class="headerlink" title="3.3 如何启动整个模块系统"></a>3.3 如何启动整个模块系统</h4><ul>
+<li>在html页面中使用<code>seajs.use()</code><br>方法，指定一个入口文件模块</li>
+</ul>
+<p>define方法的回调函数中分别传递三个参数：</p>
+<p>define（function（require,exports,modules）{<br>  console.log(‘main.js文件被加载了’);<br>  require(‘./a’);<br>}）</p>
+<p>使用seajs.use方法，指定一个模块，启动整个模块系统</p>
+<p>seajs.use(../js/main);</p>
+<p>加载的模块路径可以省略后缀名</p>
+<p>每一个模块中有一个require 函数，可以用来加载指定模块，需要接受一个模块路径</p>
+<p>模块的作用域和导出：</p>
+<p>模块天生就是一个私有作用域，在该模块内部定义的所有成员，默认都是该模块的私有变量。如果模块内部的成员想要被外部所访问：必须通过module.exports对象向外暴露</p>
+<p>函数加载模块的时候，会自动拿到模块内部的module.exports对象</p>
+<p>exports:SeaJs提供的接口对象，exports是module.exports接口对象的一个引用，也就是说：修改了exports相当于修改了module.exports,但是如果想要向外暴露一个单独的变量、函数等成员，那就必须通过给modules.exports赋值才行，在模块内部给xports赋值不管用</p>
+<p>4.改造jquery代码，使之具有SeaJS模块定义规范</p>
+<pre><code>if(typeof define===&apos;function&apos; &amp;&amp; defined.cmd ){
+  define(function(require,exports,module){
+  module.exports=jQuery;
+})
+}
+</code></pre><h3 id="3-4-常见的JavaScript模块化规范"><a href="#3-4-常见的JavaScript模块化规范" class="headerlink" title="3.4 常见的JavaScript模块化规范"></a>3.4 常见的JavaScript模块化规范</h3><ul>
+<li><p>Node 环境</p>
+<ul>
+<li>CommonJS</li>
+</ul>
+</li>
+<li><p>浏览器环境</p>
+<ul>
+<li>AMD<ul>
+<li>RequireJS</li>
+</ul>
+</li>
+<li>CMD<ul>
+<li>SeaJS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ECMAScript</p>
+<ul>
+<li>ECMASCript 6</li>
+</ul>
+</li>
+<li><p>UMD</p>
+</li>
+</ul>
+<p>规范其实就是这些这些库在推广的过程中逐渐</p>
+<p>所谓的和规范就是：</p>
+<ul>
+<li>定义了模块的书写格式</li>
+<li>以及模块之前的交互规则</li>
+</ul>
+<h2 id="4-API详解"><a href="#4-API详解" class="headerlink" title="4. API详解"></a>4. API详解</h2><h3 id="4-1-seajs-use"><a href="#4-1-seajs-use" class="headerlink" title="4.1 seajs.use"></a>4.1 seajs.use</h3><p>加载模块，启动模块系统。</p>
+<ul>
+<li>加载一个模块<code>seajs.use(&#39;id&#39;)</code></li>
+<li>加载一个模块，在加载完成时，执行回调<code>seajs.use(&#39;id&#39;,callback)</code></li>
+<li>家在多个模块，加载完成时执行回调 <code>sejs.use([&#39;id1&#39;,&#39;id2&#39;],callback)</code></li>
+</ul>
+<h3 id="4-2-define"><a href="#4-2-define" class="headerlink" title="4.2 define"></a>4.2 define</h3><p>define 是一个全局函数，用来定义模块。</p>
+<p>define接受参数，参数可以是一个函数，也可以是一个对象或字符串。</p>
+<p>参数为对象、字符串是，表示模块的接口就是对象、字符串。</p>
+<h3 id="4-3-require"><a href="#4-3-require" class="headerlink" title="4.3 require"></a>4.3 require</h3><p>require 用来加载一个js文件模块，Require用来获取指定模块的接口对象 <code>modele.exports</code>。</p>
+<p>require 在加载和执行的时候，js会按照同步的方式执行。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/03/18/模块化/" class="archive-article-date">
+  	<time datetime="2016-03-18T12:19:55.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-18</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
   
 
 
