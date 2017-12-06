@@ -38,7 +38,7 @@
 		</a>
 
 		<hgroup>
-		  <h1 class="header-author"><a href="/">隨心</a></h1>
+		  <h1 class="header-author"><a href="/">John Doe</a></h1>
 		</hgroup>
 
 		
@@ -97,7 +97,7 @@
       <nav id="mobile-nav">
   	<div class="overlay">
   		<div class="slider-trigger"><i class="icon-list"></i></div>
-  		<h1 class="header-author js-mobile-header hide">隨心</h1>
+  		<h1 class="header-author js-mobile-header hide">John Doe</h1>
   	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
@@ -107,7 +107,7 @@
 				
 			</div>
 			<hgroup>
-			  <h1 class="header-author">隨心</h1>
+			  <h1 class="header-author">John Doe</h1>
 			</hgroup>
 			
 			<nav class="header-menu">
@@ -138,6 +138,60 @@
 
       <div class="body-wrap">
         
+  
+    <article id="post-总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-按照字符数截取指定长度中英文混合字符串"><a href="#1-按照字符数截取指定长度中英文混合字符串" class="headerlink" title="1.按照字符数截取指定长度中英文混合字符串"></a>1.按照字符数截取指定长度中英文混合字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">String.prototype.sub = function(n) &#123;</div><div class="line">       var r = /[^\x00-\xff]/g;</div><div class="line">       if (this.replace(r, &quot;mm&quot;).length &lt;= n) return this;</div><div class="line">       // n = n - 3;    </div><div class="line">       var m = Math.floor(n / 2);</div><div class="line">       for (var i = m; i &lt;= this.length; i++) &#123;</div><div class="line">           if (this.substr(0, i).replace(r, &quot;mm&quot;).length &gt;= n) &#123;</div><div class="line"></div><div class="line">               var reg = new RegExp(&quot;[^\x00-\xff]+&quot;, &quot;g&quot;);　</div><div class="line">               var value = this.substr(i - 1, 1);</div><div class="line"></div><div class="line">               if (this.substr(0, i).replace(r, &quot;mm&quot;).length % 2 == 0) &#123;</div><div class="line"></div><div class="line">                   return this.substr(0, i);</div><div class="line">               &#125; else &#123;</div><div class="line">                   if (reg.test(value)) &#123;</div><div class="line">                       return this.substr(0, i - 1);</div><div class="line">                   &#125;</div><div class="line">                   return this.substr(0, i);</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       return this;</div><div class="line">   &#125;;</div><div class="line"></div><div class="line">   var a = &apos;【贵州全话费费aaa&apos;;</div><div class="line">   console.log(a.sub(14))</div></pre></td></tr></table></figure>
+<h3 id="2-按照时间对数组进行排序"><a href="#2-按照时间对数组进行排序" class="headerlink" title="2.按照时间对数组进行排序"></a>2.按照时间对数组进行排序</h3><p>时间是2017-12-06这样的格式（20171206这种时间格式在IE上会有问题）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">data.sort(function(a,b)&#123;</div><div class="line">     return Date.parse(a.flowsKeepOprTime) -Date.parse(b.flowsKeepOprTime);//时间正序</div><div class="line"> &#125;);</div></pre></td></tr></table></figure>
+<h3 id="3-手机号码加密"><a href="#3-手机号码加密" class="headerlink" title="3.手机号码加密"></a>3.手机号码加密</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phoneNum.replace(/(\d&#123;3&#125;)\d&#123;4&#125;(\d&#123;4&#125;)/, &apos;$1****$2&apos;);</div></pre></td></tr></table></figure>
+<h3 id="4-常用的字符串的方法"><a href="#4-常用的字符串的方法" class="headerlink" title="4.常用的字符串的方法"></a>4.常用的字符串的方法</h3><ul>
+<li><p>split()   使用一个指定的分隔符把一个字符串分割存储到数组中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">str=”jpg|bmp|gif|ico|png”; </div><div class="line">arr=str.split(”|”); </div><div class="line">得到的arr是一个数组:[”jpg”,”bmp”,”gif”,”ico”,”png”]</div></pre></td></tr></table></figure>
+</li>
+<li><p>join()  使用一个指定的分隔符将一个数组合并为一个字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr =[”jpg”,”bmp”,”gif”,”ico”,”png”];</div><div class="line">var newArr=arr.join(&quot;|&quot;);</div><div class="line">得到的newArr是一个字符串：&quot;jpg|bmp|gif|ico|png&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>substring()  用于提取字符串中介于两个指定下标之间的字符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">stringObject.substring(start,stop) 返回内容是从 start 处到 stop-1 处的所有字符。(不包括stop)</div><div class="line">start 必需。一个非负的整数，规定要提取的子串的第一个字符在 stringObject 中的位置。</div><div class="line">stop 	可选。一个非负的整数，比要提取的子串的最后一个字符在 stringObject 中的位置多 1。如果省略该参数，那么返回的子串会一直到字符串的结尾。</div></pre></td></tr></table></figure>
+</li>
+<li><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">stringObject.slice(start,end) 返回包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（不包括 end）为止的所有字符。</div><div class="line">start	要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</div><div class="line">end	紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</div></pre></td></tr></table></figure>
+</li>
+<li><p>substr() 方法可在字符串中抽取从 <em>start</em> 下标开始的指定数目的字符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">stringObject.substr(start,length)</div><div class="line">start	必需。要抽取的子串的起始下标。必须是数值。如果是负数，那么该参数声明从字符串的尾部开始算起的位置。也就是说，-1 指字符串中最后一个字符，-2 指倒数第二个字符，以此类推。</div><div class="line">length	可选。子串中的字符数。必须是数值。如果省略了该参数，那么返回从 stringObject 的开始位置到结尾的字串。</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/12/06/总结/" class="archive-article-date">
+  	<time datetime="2017-12-06T07:00:30.508Z" itemprop="datePublished"><i class="icon-clock"></i>2017-12-06</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-测试" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -918,7 +972,7 @@ Return new F();
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 隨心
+    		&copy; 2017 John Doe
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
